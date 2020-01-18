@@ -1,1 +1,4 @@
-# dating
+# dating assignment
+
+### Authors
+- Joshua Kristiansen
