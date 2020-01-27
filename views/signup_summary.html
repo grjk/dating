@@ -40,16 +40,17 @@
 
                     <div class="row">
                         <div class="col-sm-6 d-inline">
-
-                            <p><b>Name:</b> {{ @SESSION.fname }} {{ @SESSION.lname }}</p>
-                            <p><b>Gender:</b> {{ @SESSION.gender }}</p>
-                            <p><b>Age:</b> {{ @SESSION.age }}</p>
-                            <p><b>Phone:</b> {{ @SESSION.pnumber }}</p>
-                            <p><b>Email:</b> {{ @SESSION.email }}</p>
-                            <p><b>State:</b> {{ @SESSION.state }}</p>
-                            <p><b>Seeking:</b> {{ @SESSION.seeking }}</p>
-                            <p><b>Interests:</b></p>
-
+                            <div class="ml-5">
+                                <p><b>Name:</b> {{ @SESSION.fname }} {{ @SESSION.lname }}</p>
+                                <p><b>Gender:</b> {{ @SESSION.gender }}</p>
+                                <p><b>Age:</b> {{ @SESSION.age }}</p>
+                                <p><b>Phone:</b> {{ @SESSION.pnumber }}</p>
+                                <p><b>Email:</b> {{ @SESSION.email }}</p>
+                                <p><b>State:</b> {{ @SESSION.state }}</p>
+                                <p><b>Seeking:</b> {{ @SESSION.seeking }}</p>
+                                <p><b>Interests:</b></p>
+                                <p>{{ @SESSION.interests }}</p>
+                            </div>
                         </div>
 
                         <div class="col-sm-6 d-inline">
@@ -69,7 +70,8 @@
             </div>
             <!-- Button -->
             <div class="text-center pb-4">
-                <input class="btn btn-lg btn-success" value="Contact me!">
+                <button class="btn btn-lg btn-success">Contact me!</button>
+                <!-- <input class="btn btn-lg btn-success" value="Contact me!"> -->
             </div>
         </div>
     </div>

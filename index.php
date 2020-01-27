@@ -51,6 +51,7 @@ $f3->route('POST /sign-up/3', function() {
 // Define another route
 $f3->route('POST /sign-up/summary', function() {
     // var_dump($_POST);
+    $_SESSION['interests'] = $_POST['interests'];
     $view = new Template();
     echo $view->render('views/signup_summary.html');
 });
