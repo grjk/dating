@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Joshua Kristiansen"/>
+    <meta name="description" content="Dating website assignment. Bootstrap and Fat-Free">
+    <!-- 1/17/2020 -->
+
+    <title>Sign up</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../images/favicon.png" />
+
+    <link rel="stylesheet" href="../styles/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
+</head>
+<body id="bg">
+
+<!-- Nav bar -->
+<nav class="nav navbar text-white bg-dark shadow-sm">
+    <h4 class="nav-text">DateUp&trade;</h4>
+</nav>
+
+<!-- Form -->
+<form>
+    <!-- Container -->
+    <div class="d-flex justify-content-center">
+        <div class="rounded shadow bg-white mt-5 w-75">
+            <div class="align-self-center py-4">
+
+                <!-- Title and description of website -->
+                <h1 class="text-center">Profile</h1>
+                <div class="mx-5">
+                    <hr class="mx-5">
+
+                    <div class="row">
+                        <div class="col-sm-6 d-inline">
+
+                            <p><b>Name:</b> {{ @SESSION.fname }} {{ @SESSION.lname }}</p>
+                            <p><b>Gender:</b> {{ @SESSION.gender }}</p>
+                            <p><b>Age:</b> {{ @SESSION.age }}</p>
+                            <p><b>Phone:</b> {{ @SESSION.pnumber }}</p>
+                            <p><b>Email:</b> {{ @SESSION.email }}</p>
+                            <p><b>State:</b> {{ @SESSION.state }}</p>
+                            <p><b>Seeking:</b> {{ @SESSION.seeking }}</p>
+                            <p><b>Interests:</b></p>
+
+                        </div>
+
+                        <div class="col-sm-6 d-inline">
+
+                            <!--Zoom effect-->
+                            <div class="zoom text-center">
+                                <img src="../images/prof-pic.png" class="img-fluid w-50" alt="profile-picture">
+                            </div>
+                            <br>
+                            <br>
+                            <p><b>Biography:</b></p>
+                            <p>{{ @SESSION.bio }}</p>
+                        </div>
+                    </div>
+                    <hr class="mx-5">
+                </div>
+            </div>
+            <!-- Button -->
+            <div class="text-center pb-4">
+                <input class="btn btn-lg btn-success" value="Contact me!">
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
+</body>
+</html>

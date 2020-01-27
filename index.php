@@ -43,8 +43,16 @@ $f3->route('POST /sign-up/3', function() {
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['state'] = $_POST['state'];
     $_SESSION['seeking'] = $_POST['customRadio'];
+    $_SESSION['bio'] = $_POST['bio'];
     $view = new Template();
     echo $view->render('views/interests_info.html');
+});
+
+// Define another route
+$f3->route('POST /sign-up/summary', function() {
+    // var_dump($_POST);
+    $view = new Template();
+    echo $view->render('views/signup_summary.html');
 });
 
 // Define route
