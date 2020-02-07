@@ -27,7 +27,7 @@
 </nav>
 
 <!-- Form -->
-<form method="post" action="2">
+<form method="post" action="#">
     <!-- Container -->
     <div class="d-flex justify-content-center">
         <div class="rounded shadow bg-white mt-5 w-75">
@@ -43,14 +43,23 @@
                         <div class="form-group">
                             <label for="fname">First name</label>
                             <input type="text" class="form-control" id="fname" name="fname" placeholder="John">
+                            <check if="{{ @errors['fname'] }}">
+                                <span class="text-danger">{{ @errors['fname'] }}</span>
+                            </check>
                         </div>
                         <div class="form-group">
                             <label for="lname">Last name</label>
                             <input type="text" class="form-control" id="lname" name="lname" placeholder="Doe">
+                            <check if="{{ @errors['lname'] }}">
+                                <span class="text-danger">{{ @errors['lname'] }}</span>
+                            </check>
                         </div>
                         <div class="form-group">
-                            <label for="age">age</label>
-                            <input type="number" class="form-control" id="age" name="age" placeholder="21">
+                            <label for="age">Age</label>
+                            <input type="number" class="form-control" id="age" name="age" placeholder="18-80">
+                            <check if="{{ @errors['age'] }}">
+                                <span class="text-danger">{{ @errors['age'] }}</span>
+                            </check>
                         </div>
 
                         <label>Gender:</label>
@@ -68,6 +77,9 @@
                         <div class="form-group">
                             <label for="pnumber">Phone number</label>
                             <input class="form-control" type="tel" id="pnumber" name="pnumber" placeholder="(555) 555-5555">
+                            <check if="{{ @errors['pnumber'] }}">
+                                <span class="text-danger">{{ @errors['pnumber'] }}</span>
+                            </check>
                         </div>
 
                         <hr class="mx-5">

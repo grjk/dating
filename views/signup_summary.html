@@ -49,7 +49,7 @@
                                 <p><b>State:</b> {{ @SESSION.state }}</p>
                                 <p><b>Seeking:</b> {{ @SESSION.seeking }}</p>
                                 <p><b>Interests:</b></p>
-                                <p>{{ @SESSION.interests }}</p>
+                                <p>{{ implode(", ", @SESSION.interests) }}</p>
                             </div>
                         </div>
 
