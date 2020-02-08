@@ -27,7 +27,7 @@
 </nav>
 
 <!-- Form -->
-<form method="post" action="summary">
+<form method="post" action="#">
     <!-- Container -->
     <div class="d-flex justify-content-center">
         <div class="rounded shadow bg-white mt-5 w-75">
@@ -42,8 +42,12 @@
                         <label>In-door interests</label>
                         <div class="text-center">
                             <repeat group="{{ @in_interests }}" value="{{ @interest }}">
-                                <label class="px-3"><input type="checkbox" class="px-3" name="interests[]" value="{{ @interest }}"><span class="pl-2">{{ ucfirst(@interest) }}</span></label>
+                                <label class="px-3"><input type="checkbox" class="px-3" name="interestsIn[]" value="{{ @interest }}"><span class="pl-2">{{ ucfirst(@interest) }}</span></label>
                             </repeat>
+                            <br>
+                            <check if="{{ @errors['in_interest'] }}">
+                                <span class="text-danger">{{ @errors['in_interest'] }}</span>
+                            </check>
                             <hr class="mx-5">
                         </div>
 
@@ -52,8 +56,12 @@
                         <label>Out-door interests</label>
                         <div class="text-center">
                             <repeat group="{{ @out_interests }}" value="{{ @interest }}">
-                                <label class="px-3"><input type="checkbox" name="interests[]" value="{{ @interest }}"><span class="pl-2">{{ ucfirst(@interest) }}</span></label>
+                                <label class="px-3"><input type="checkbox" name="interestsOut[]" value="{{ @interest }}"><span class="pl-2">{{ ucfirst(@interest) }}</span></label>
                             </repeat>
+                            <br>
+                            <check if="{{ @errors['out_interest'] }}">
+                                <span class="text-danger">{{ @errors['out_interest'] }}</span>
+                            </check>
                             <hr class="mx-5">
                         </div>
                     </div>

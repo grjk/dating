@@ -27,7 +27,7 @@
 </nav>
 
 <!-- Form -->
-<form method="post" action="3">
+<form method="post" action="#">
     <!-- Container -->
     <div class="d-flex justify-content-center">
         <div class="rounded shadow bg-white mt-5 w-75">
@@ -43,14 +43,17 @@
                             <!-- Input fields -->
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="JohnDoe@mail.com">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="JohnDoe@mail.com" value="{{ @email }}">
+                                <check if="{{ @errors['email'] }}">
+                                    <span class="text-danger">{{ @errors['email'] }}</span>
+                                </check>
                             </div>
 
                             <div class="form-group">
-                                <label for="state">State:</label>
+                                <label>State:</label>
                                 <br>
-                                <select class="browser-default custom-select w-50" name="state">
-                                    <option value="none">Select a state</option>
+                                <select class="browser-default custom-select w-50" id="state" name="state">
+                                    <option value="">Select a state</option>
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
                                     <option value="AZ">Arizona</option>
@@ -103,22 +106,28 @@
                                     <option value="WI">Wisconsin</option>
                                     <option value="WY">Wyoming</option>
                                 </select>
+                                <br>
+                                <check if="{{ @errors['state'] }}">
+                                    <span class="text-danger">{{ @errors['state'] }}</span>
+                                </check>
                             </div>
 
                             <br>
 
+                            <label>Seeking:</label>
                             <div class="form-group">
-                                <label>Seeking:</label>
-                                <div >
-                                    <div class="custom-control custom-radio d-inline px-4">
-                                        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" value="Male">
-                                        <label class="custom-control-label" for="customRadio1">Male</label>
-                                    </div>
-                                    <div class="custom-control custom-radio d-inline px-4">
-                                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" value="Female">
-                                        <label class="custom-control-label" for="customRadio2">Female</label>
-                                    </div>
+                                <div class="custom-control custom-radio d-inline px-4">
+                                    <input type="radio" id="male" name="seeking" class="custom-control-input" value="Male">
+                                    <label class="custom-control-label" for="male">Male</label>
                                 </div>
+                                <div class="custom-control custom-radio d-inline px-4">
+                                    <input type="radio" id="female" name="seeking" class="custom-control-input" value="Female">
+                                    <label class="custom-control-label" for="female">Female</label>
+                                </div>
+                                <br>
+                                <check if="{{ @errors['seeking'] }}">
+                                    <span class="text-danger">{{ @errors['seeking'] }}</span>
+                                </check>
                             </div>
                         </div>
 
@@ -126,8 +135,11 @@
                             <!-- Dating picture -->
                             <div class="form-group">
                                 <label for="bio">Biography</label>
-                                <textarea type="text" class="form-control" id="bio" name="bio" rows="7"></textarea>
+                                <textarea type="text" class="form-control" id="bio" name="bio" rows="7" maxlength="100">{{ @bio }}</textarea>
                             </div>
+                            <check if="{{ @errors['bio'] }}">
+                                <span class="text-danger">{{ @errors['bio'] }}</span>
+                            </check>
                         </div>
                     </div>
                     <hr class="mx-5">
