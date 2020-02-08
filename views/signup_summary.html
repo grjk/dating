@@ -49,8 +49,12 @@
                                 <p><b>State:</b> {{ @SESSION.state }}</p>
                                 <p><b>Seeking:</b> {{ @SESSION.seeking }}</p>
                                 <p><b>Interests:</b></p>
-                                <p>{{ implode(", ", @SESSION.interestsIn) }}</p>
-                                <p>{{ implode(", ", @SESSION.interestsOut) }}</p>
+                                <check if="{{ @SESSION.interestsIn }}">
+                                    <p>{{ implode(", ", @SESSION.interestsIn) }}</p>
+                                </check>
+                                <check if="{{ @SESSION.interestsOut }}">
+                                    <p>{{ implode(", ", @SESSION.interestsOut) }}</p>
+                                </check>
                             </div>
                         </div>
 
