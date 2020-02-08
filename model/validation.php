@@ -1,5 +1,7 @@
 <?php
 
+// -------------------------------Form 1 Validation Checker-------------------------------
+
 /* Validate the first form in the sign-up process
  * @return boolean
  */
@@ -36,23 +38,7 @@ function validFormOne() {
     return $isValid;
 }
 
-function validName($name) {
-    return preg_match('/^[a-zA-Z]/', $name);
-}
-
-function validAge($age) {
-    return ($age >= 18 && $age <= 80);
-}
-
-function validGender($gender) {
-    return $gender;
-}
-
-function validPN($PN) {
-    return preg_match('/^[0-9]{9}/', $PN);
-}
-
-// -------------------------------Form 2-------------------------------
+// -------------------------------Form 2 Validation Checker-------------------------------
 
 /* Validate the second form in the sign-up process
  * @return boolean
@@ -85,20 +71,11 @@ function validFormTwo() {
     return $isValid;
 }
 
-function validEmail($email) {
-    return filter_var($email, FILTER_VALIDATE_EMAIL);
-}
+// -------------------------------Form 3 Validation Checker-------------------------------
 
-function validState($state) {
-    return $state != "";
-}
-
-function validBio($bio) {
-    return $bio;
-}
-
-// -------------------------------Form 3-------------------------------
-
+/* Validate the third form in the sign-up process
+ * @return boolean
+ */
 function validFormThree() {
 
     global $f3;
@@ -121,6 +98,60 @@ function validFormThree() {
     return $isValid;
 }
 
+// -------------------------------Validation Functions-------------------------------
+
+/* Function to validate if the variable passed in complies with the rules for what a name can have
+ * @return boolean
+ */
+function validName($name) {
+    return preg_match('/^[a-zA-Z]/', $name);
+}
+
+/* Function to validate age by making sure a value in between 18 and 80 exists
+ * @return boolean
+ */
+function validAge($age) {
+    return ($age >= 18 && $age <= 80);
+}
+
+/* Function to validate gender by checking if one of the radio buttons have been set
+ * @return boolean
+ */
+function validGender($gender) {
+    return $gender;
+}
+
+/* Function to validate the phone number by checking length and what characters were put in
+ * @return boolean
+ */
+function validPN($PN) {
+    return preg_match('/^[0-9]{9}/', $PN);
+}
+
+/* Function to validate email by checking if it complies with the email-standard
+ * @return boolean
+ */
+function validEmail($email) {
+    return filter_var($email, FILTER_VALIDATE_EMAIL);
+}
+
+/* Function to validate the state by checking if the value has been set
+ * @return boolean
+ */
+function validState($state) {
+    return $state != "";
+}
+
+/* Function to validate the bio by checking if it has been set
+ * @return boolean
+ */
+function validBio($bio) {
+    return $bio;
+}
+
+/* Function to validate interests by checking if the selected ones are one of the provided options
+ * @return boolean
+ */
 function validInterests($chosen, $validOptions) {
     if (!array_intersect($chosen, $validOptions)) {
         return false;
