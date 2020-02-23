@@ -53,7 +53,7 @@
                                 <label>State:</label>
                                 <br>
                                 <select class="browser-default custom-select w-50" id="state" name="state">
-                                    <option value="">Select a state</option>
+                                    <option value="{{ @state }}">{{ @state }}</option>
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
                                     <option value="AZ">Arizona</option>
@@ -106,6 +106,12 @@
                                     <option value="WI">Wisconsin</option>
                                     <option value="WY">Wyoming</option>
                                 </select>
+
+                                <!--<select class="browser-default custom-select w-50" id="state" name="state">
+                                    <option value="{{ @state }}">{{ @state }}</option>
+                                    re
+                                </select>-->
+
                                 <br>
                                 <check if="{{ @errors['state'] }}">
                                     <span class="text-danger">{{ @errors['state'] }}</span>
@@ -116,14 +122,20 @@
 
                             <label>Seeking:</label>
                             <div class="form-group">
-                                <div class="custom-control custom-radio d-inline px-4">
-                                    <input type="radio" id="male" name="seeking" class="custom-control-input" value="Male">
-                                    <label class="custom-control-label" for="male">Male</label>
-                                </div>
-                                <div class="custom-control custom-radio d-inline px-4">
-                                    <input type="radio" id="female" name="seeking" class="custom-control-input" value="Female">
-                                    <label class="custom-control-label" for="female">Female</label>
-                                </div>
+                                <repeat group="{{ @gender }}" value="{{ @genderOption }}">
+                                    <div class="custom-control custom-radio d-inline">
+                                        <check if="{{ @genderOption }} == {{ @seeking }}">
+                                            <true>
+                                                <input type="radio" id="{{ @genderOption }}" name="seeking" class="custom-control-input" value="{{ @genderOption }}" checked>
+                                                <label class="px-3 custom-control-label" for="{{ @genderOption }}">{{ ucfirst(@genderOption) }}</label>
+                                            </true>
+                                            <false>
+                                                <input type="radio" id="{{ @genderOption }}" name="seeking" class="custom-control-input" value="{{ @genderOption }}">
+                                                <label class="px-3 custom-control-label" for="{{ @genderOption }}">{{ ucfirst(@genderOption) }}</label>
+                                            </false>
+                                        </check>
+                                    </div>
+                                </repeat>
                                 <br>
                                 <check if="{{ @errors['seeking'] }}">
                                     <span class="text-danger">{{ @errors['seeking'] }}</span>

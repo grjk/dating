@@ -64,14 +64,20 @@
 
                         <label>Gender:</label>
                         <div class="pb-3">
-                            <div class="custom-control custom-radio d-inline px-4">
-                                <input type="radio" id="male" name="gender" class="custom-control-input" value="Male">
-                                <label class="custom-control-label" for="male">Male</label>
+                            <repeat group="{{ @gender }}" value="{{ @genderOption }}">
+                            <div class="custom-control custom-radio d-inline">
+                                <check if="{{ @genderOption }} == {{ @genderSelected }}">
+                                    <true>
+                                        <input type="radio" id="{{ @genderOption }}" name="gender" class="custom-control-input" value="{{ @genderOption }}" checked>
+                                        <label class="px-3 custom-control-label" for="{{ @genderOption }}">{{ ucfirst(@genderOption) }}</label>
+                                    </true>
+                                    <false>
+                                        <input type="radio" id="{{ @genderOption }}" name="gender" class="custom-control-input" value="{{ @genderOption }}">
+                                        <label class="px-3 custom-control-label" for="{{ @genderOption }}">{{ ucfirst(@genderOption) }}</label>
+                                    </false>
+                                </check>
                             </div>
-                            <div class="custom-control custom-radio d-inline px-4">
-                                <input type="radio" id="female" name="gender" class="custom-control-input" value="Female">
-                                <label class="custom-control-label" for="female">Female</label>
-                            </div>
+                            </repeat>
                             <br>
                             <check if="{{ @errors['gender'] }}">
                                 <span class="text-danger">{{ @errors['gender'] }}</span>
@@ -84,6 +90,12 @@
                             <check if="{{ @errors['pnumber'] }}">
                                 <span class="text-danger">{{ @errors['pnumber'] }}</span>
                             </check>
+                        </div>
+
+                        <label class="mt-3 font-weight-bold">Premium Membership</label>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                            <label class="custom-control-label" for="defaultUnchecked">Sign me up for a Premium Account!</label>
                         </div>
 
                         <hr class="mx-5">
