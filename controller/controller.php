@@ -105,6 +105,7 @@ class controller
                     $member = new Member($fname, $lname, $age, $gender, $pnumber);
                 }
 
+                $_SESSION['member'] = $member;
                 // Redirect to part 2
                 $this->_f3->reroute('/sign-up/2');
             }
