@@ -181,12 +181,6 @@ $f3->route('GET|POST /sign-up/3', function($f3) {
 // Define another route
 $f3->route('GET|POST /sign-up/summary', function() {
     // var_dump($_POST);
-    /*while ($_SESSION['interests']) {
-        $f3->set('interests', array('chocolate' => 'Chocolate Mousse', 'vanilla' => 'Vanilla Custard', 'strawberry' => 'Strawberry Shortcake'));
-    }*/
-
-    //var_dump($_SESSION);
-
     $view = new Template();
     echo $view->render('views/signup_summary.html');
     session_destroy();
