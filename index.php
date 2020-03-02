@@ -7,6 +7,7 @@ error_reporting(E_ALL);
 // Require autoload file
 require_once("vendor/autoload.php");
 require_once("model/validation.php");
+require_once("/home/joshicgr/config.php");
 
 // Start session
 session_start();
@@ -14,11 +15,17 @@ session_start();
 // Instantiate Fat-Free
 $f3 = Base::Instance();
 
+$db = new Database();
 $controller = new controller($f3);
 
 // Define a default route (view)
 $f3 -> route("GET /", function () {
     $GLOBALS['controller']->home();
+});
+
+// Define another route
+$f3->route('GET|POST /login', function() {
+    $GLOBALS['controller']->login();
 });
 
 // Define another route

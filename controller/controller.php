@@ -74,6 +74,12 @@ class controller
         echo $view->render("views/home.html");
     }
 
+    public function login()
+    {
+        $view = new Template();
+        echo $view->render("views/login.html");
+    }
+
     public function su1()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -188,6 +194,8 @@ class controller
 
     public function sum() {
         // var_dump($_POST);
+        $GLOBALS['db']->insertMember($_SESSION['member']);
+
         $view = new Template();
         echo $view->render('views/signup_summary.html');
     }
