@@ -12,6 +12,8 @@ class Member
     private $_seeking;
     private $_bio;
 
+    private $_premium = false;
+
     public function __construct($fname, $lname, $age, $gender, $phone)
     {
         $this->_fname = $fname;
@@ -163,5 +165,21 @@ class Member
     public function setBio($bio)
     {
         $this->_bio = $bio;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPremium()
+    {
+        return $this->_premium;
+    }
+
+    /**
+     * @param bool $premium
+     */
+    public function setPremium($premium)
+    {
+        $this->_premium = $premium;
     }
 }
