@@ -41,19 +41,21 @@
                     <div class="row">
                         <div class="col-sm-6 d-inline">
                             <div class="ml-5">
-                                <p><b>Name:</b> {{ @SESSION.fname }} {{ @SESSION.lname }}</p>
-                                <p><b>Gender:</b> {{ ucfirst(@SESSION.gender) }}</p>
-                                <p><b>Age:</b> {{ @SESSION.age }}</p>
-                                <p><b>Phone:</b> {{ @SESSION.pnumber }}</p>
-                                <p><b>Email:</b> {{ @SESSION.email }}</p>
-                                <p><b>State:</b> {{ @SESSION.state }}</p>
-                                <p><b>Seeking:</b> {{ ucfirst(@SESSION.seeking) }}</p>
-                                <p><b>Interests:</b></p>
-                                <check if="{{ @SESSION.interestsIn }}">
-                                    <p>{{ implode(", ", @SESSION.interestsIn) }}</p>
-                                </check>
-                                <check if="{{ @SESSION.interestsOut }}">
-                                    <p>{{ implode(", ", @SESSION.interestsOut) }}</p>
+                                <p><b>Name:</b> {{ @SESSION.member->getFname() }} {{ @SESSION.member->getLname() }}</p>
+                                <p><b>Gender:</b> {{ ucfirst(@SESSION.member->getGender()) }}</p>
+                                <p><b>Age:</b> {{ @SESSION.member->getAge() }}</p>
+                                <p><b>Phone:</b> {{ @SESSION.member->getPhone() }}</p>
+                                <p><b>Email:</b> {{ @SESSION.member->getEmail() }}</p>
+                                <p><b>State:</b> {{ @SESSION.member->getState() }}</p>
+                                <p><b>Seeking:</b> {{ ucfirst(@SESSION.member->getSeeking()) }}</p>
+                                <check if="{{ @SESSION.member->isPremium() }}">
+                                    <p><b>Interests:</b></p>
+                                    <check if="{{ @SESSION.member->getInDoorInterests() }}">
+                                        <p>{{ implode(", ", @SESSION.member->getInDoorInterests()) }}</p>
+                                    </check>
+                                    <check if="{{ @SESSION.member->getOutDoorInterests() }}">
+                                        <p>{{ implode(", ", @SESSION.member->getOutDoorInterests()) }}</p>
+                                    </check>
                                 </check>
                             </div>
                         </div>
