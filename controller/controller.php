@@ -5,10 +5,12 @@ class controller
 {
 
     private $_f3;
+    private $_val;
 
     public function __construct($f3)
     {
         $this->_f3 = $f3;
+        $this->_val = new Validation($this->_f3);
 
         $this->_f3->set('gender', array('Male', 'Female'));
         $this->_f3->set('states', array(
@@ -89,7 +91,7 @@ class controller
             $this->_f3->set('pnumber', $pnumber);
 
             // If data is valid
-            if (validFormOne()) {
+            if ($this->_val->validFormOne()) {
 
                 // Write data to Session
                 $_SESSION['fname'] = $fname;
@@ -100,6 +102,7 @@ class controller
 
                 if (!empty($_POST["premium"])) {
                     $member = new PremiumMember($fname, $lname, $age, $gender, $pnumber);
+                    $member->setPremium(true);
                 }
                 else {
                     $member = new Member($fname, $lname, $age, $gender, $pnumber);
@@ -127,23 +130,26 @@ class controller
             $bio = $_POST["bio"];
 
             $this->_f3->set('email', $email);
-            $this->_f3->set('email', $email);
             $this->_f3->set('state', $state);
             $this->_f3->set('seeking', $seeking);
             $this->_f3->set('bio', $bio);
 
-            if (validFormTwo()) {
+            if ($this->_val->validFormTwo()) {
 
                 // Add to SESSION variable
-                $_SESSION['email'] = $email;
-                $_SESSION['state'] = $state;
-                $_SESSION['seeking'] = $seeking;
-                $_SESSION['bio'] = $bio;
+                $_SESSION['member']->setEmail($email);
+                $_SESSION['member']->setState($state);
+                $_SESSION['member']->setSeeking($seeking);
+                $_SESSION['member']->setBio($bio);
 
-
-
-                // Redirect to part 3
-                $this->_f3->reroute('/sign-up/3');
+                if ($_SESSION['member']->isPremium()) {
+                    // Redirect to part 3
+                    $this->_f3->reroute('/sign-up/3');
+                }
+                else {
+                    // Redirect to summary
+                    $this->_f3->reroute('/sign-up/summary');
+                }
             }
         }
 
@@ -165,11 +171,11 @@ class controller
             $this->_f3->set('interestsIn', $interestsIn);
             $this->_f3->set('interestsOut', $interestsOut);
 
-            if (validFormThree()) {
+            if ($this->_val->validFormThree()) {
 
                 // Add to SESSION variable
-                $_SESSION['interestsIn'] = $interestsIn;
-                $_SESSION['interestsOut'] = $interestsOut;
+                $_SESSION['member']->setInDoorInterests($interestsIn);
+                $_SESSION['member']->setOutDoorInterests($interestsOut);
 
                 // Redirect to summary
                 $this->_f3->reroute('/sign-up/summary');
